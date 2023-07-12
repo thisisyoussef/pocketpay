@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // Add Transaction
-router.post('/addTransaction', async (req, res) => {
+router.post('payment/addTransaction', async (req, res) => {
     try {
       const { payee, amount, description, tip } = req.body;
   
