@@ -29,6 +29,34 @@ app.use(sortCodeToBankUser);
 app.use(ticketUser);
 app.use(verificationUser);
 
+app.get('/paymentProcess', (req, res) => {
+  // Generate transaction details (dummy data)
+  const transactionNumber = '123456789';
+  const amountToPay = 100.0;
+
+  // Render the financial institution page
+  res.send(`
+    <html>
+      <head>
+        <title>Financial Institution</title>
+      </head>
+      <body>
+        <h1>Transaction Details</h1>
+        <p>Transaction Number: ${transactionNumber}</p>
+        <p>Amount to Pay: $${amountToPay}</p>
+        <button onclick="pay()">Pay Now</button>
+
+        <script>
+          function pay() {
+            // Redirect back to the app using the deep link
+            const deepLink = 'your-app-deep-link://transaction/${transactionNumber}';
+            window.location.href = deepLink;
+          }
+        </script>
+      </body>
+    </html>
+  `);
+});
 
 //run mongoose
 require("./db/mongoose");
