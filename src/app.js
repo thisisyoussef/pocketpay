@@ -30,10 +30,10 @@ app.use(ticketUser);
 app.use(verificationUser);
 
 
+//run mongoose
+require("./db/mongoose");
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-//run mongoose
-require("./db/mongoose");
