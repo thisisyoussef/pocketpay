@@ -24,7 +24,7 @@ router.post('/payment/addTransaction', async (req, res) => {
   });
   
   // Transfer Consent
-  router.get('/transferConsent', async (req, res) => {
+  router.get('payment/transferConsent', async (req, res) => {
     try {
       const { consent, transactionNumber } = req.query;
       const auid = req.headers['application-user-id'];
