@@ -49,7 +49,7 @@ app.get('/paymentProcess', (req, res) => {
         <script>
           function pay() {
             // Redirect back to the app using the deep link
-            const deepLink = 'your-app-deep-link://transaction/${transactionNumber}';
+            const deepLink = 'flutterbooksample.com://transaction/${transactionNumber}';
             window.location.href = deepLink;
           }
         </script>
