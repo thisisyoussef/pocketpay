@@ -10,8 +10,8 @@ router.post('/payment/addTransaction', async (req, res) => {
   
       if (isSuccess) {
         console.log(`Add transaction: payee=${payee}, amount=${amount}, description=${description}, tip=${tip}`);
-        const authorisationUrl = 'https://example.com/authorise'; // Simulated redirect URL
-        const transactionNumber = '123456789'; // Simulated transaction number
+        const authorisationUrl = 'https://sparkling-tutu-frog.cyclic.app/paymentProcess'; // Simulated redirect URL
+        const transactionNumber = '89436739'; // Simulated transaction number
         res.status(200).json({ authorisationUrl, transaction: { transactionNumber } });
       } else {
         console.log(`Failed to add transaction: payee=${payee}, amount=${amount}, description=${description}, tip=${tip}`);
