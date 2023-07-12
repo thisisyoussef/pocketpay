@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../exquizite"
+		},
+		{
+			"path": "../../stryke"
+		},
+		{
+			"path": "../open-api-converter"
+		}
+	],
+	"settings": {}
+}
