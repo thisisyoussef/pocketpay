@@ -84,23 +84,85 @@ app.put('/user/remoteLogout/:email', (req, res) => {
   }
 });
 
+
 // My profile endpoint
 app.get('/user/myProfile', (req, res) => {
   if (simulateSuccess()) {
     const decodedData = {
       user: {
-        _id: 'dummyUserId',
+        _id: 'user_id',
         email: 'user@example.com',
         firstName: 'John',
         lastName: 'Doe',
         dob: '1990-01-01',
         address: {
-          postCode: '12345'
+          postCode: '12345',
         },
         loginPin: '1234',
         phone: '1234567890',
-        institution: []
-      }
+        institution: [
+          {
+            _id: 'institution1_id',
+            institution: {
+              logo: 'https://example.com/logo1.png',
+              sortCode: '123456',
+              _id: 'institution1_id',
+              name: 'Barclays Bank',
+            },
+            accountNumber: '12345678',
+          },
+          {
+            _id: 'institution2_id',
+            institution: {
+              logo: 'https://example.com/logo2.png',
+              sortCode: '234567',
+              _id: 'institution2_id',
+              name: 'Lloyds Bank',
+            },
+            accountNumber: '23456789',
+          },
+          {
+            _id: 'institution3_id',
+            institution: {
+              logo: 'https://example.com/logo3.png',
+              sortCode: '345678',
+              _id: 'institution3_id',
+              name: 'NatWest Bank',
+            },
+            accountNumber: '34567890',
+          },
+          {
+            _id: 'institution4_id',
+            institution: {
+              logo: 'https://example.com/logo4.png',
+              sortCode: '456789',
+              _id: 'institution4_id',
+              name: 'HSBC Bank',
+            },
+            accountNumber: '45678901',
+          },
+          {
+            _id: 'institution5_id',
+            institution: {
+              logo: 'https://example.com/logo5.png',
+              sortCode: '567890',
+              _id: 'institution5_id',
+              name: 'Santander Bank',
+            },
+            accountNumber: '56789012',
+          },
+          {
+            _id: 'institution6_id',
+            institution: {
+              logo: 'https://example.com/logo6.png',
+              sortCode: '678901',
+              _id: 'institution6_id',
+              name: 'Nationwide Building Society',
+            },
+            accountNumber: '67890123',
+          },
+        ],
+      },
     };
     res.status(200).json(decodedData);
   } else {
