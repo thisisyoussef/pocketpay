@@ -1,4 +1,16 @@
 const express = require('express');
+const onBoardingUser = require('./routes/user/userProfile/onboardingUser');
+const updateUser = require('./routes/user/userProfile/updateUser');
+const verificationUserProfile = require('./routes/user/userProfile/verificationUser');
+const institutionUser = require('./routes/user/institutionEndpointsUser');
+const paymentUser = require('./routes/user/payment');
+const receiptUser = require('./routes/user/receipt');
+const sortCodeToBankUser = require('./routes/user/sortcodeToBank');
+const ticketUser = require('./routes/user/ticket');
+const verificationUser = require('./routes/user/verification');
+
+
+
 const bodyParser = require('body-parser');
 
 // Add body-parser middleware
@@ -7,6 +19,15 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3007;
 
+app.use(onBoardingUser);
+app.use(updateUser);
+app.use(verificationUserProfile);
+app.use(institutionUser);
+app.use(paymentUser);
+app.use(receiptUser);
+app.use(sortCodeToBankUser);
+app.use(ticketUser);
+app.use(verificationUser);
 app.get('/paymentProcess', (req, res) => {
   // Generate transaction details (dummy data)
   const transactionNumber = '123456789';
@@ -22,55 +43,63 @@ app.get('/paymentProcess', (req, res) => {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #f4f4f4;
           }
 
           h1 {
             color: #333;
           }
 
-          p {
-            color: #666;
-          }
-
           button {
-            padding: 15px 30px;
-            font-size: 20px;
-            background-color: #007BFF;
+            background-color: #4CAF50;
             color: white;
-            border: none;
-            border-radius: 5px;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
             cursor: pointer;
+            border: none;
+            border-radius: 4px;
           }
 
-          button:hover {
-            background-color: #0056b3;
-          }
+          @media screen and (max-width: 600px) {
+            body {
+              font-size: 18px;
+            }
 
-          .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
+            button {
+              padding: 12px 24px;
+              font-size: 14px;
+            }
           }
         </style>
       </head>
       <body>
-        <div class="container">
-          <h1>Transaction Details</h1>
-          <p><strong>Transaction Number:</strong> ${transactionNumber}<br>
-          This is your unique identifier for this transaction.</p>
-          <p><strong>Amount to Pay:</strong> $${amountToPay}<br>
-          This is the total amount due for the transaction.</p>
-          <button onclick="pay()">Complete Transaction</button>
-        </div>
+        <article>
+          <header>
+            <h1>Transaction Details</h1>
+          </header>
+          <section>
+            <p>Transaction Number: ${transactionNumber}</p>
+            <p>Amount to Pay: $${amountToPay}</p>
+          </section>
+          <footer>
+            <button onclick="confirmPayment()" role="button">Pay Now</button>
+          </footer>
+        </article>
+
         <script>
+          function confirmPayment() {
+            if (window.confirm('Are you sure you want to proceed with the payment?')) {
+              pay();
+            }
+          }
+
           function pay() {
             // Redirect back to the app using the deep link
-            const deepLink = 'custom.flutterbooksample.com://transaction/${transactionNumber}';
+            const deepLink = 'flutterbooksample.com://:';
             window.location.href = deepLink;
           }
         </script>
@@ -78,6 +107,11 @@ app.get('/paymentProcess', (req, res) => {
     </html>
   `);
 });
+
+
+//run mongoose
+require("./db/mongoose");
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
