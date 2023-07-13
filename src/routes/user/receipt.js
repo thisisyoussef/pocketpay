@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 // Get Receipts per Account
-router.get('/receiptAccInst', async (req, res) => {
+router.get('/user/receiptAccInst', async (req, res) => {
     try {
       const { sortCode, accountNumber } = req.query;
   
