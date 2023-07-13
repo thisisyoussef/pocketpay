@@ -12,6 +12,10 @@ app.get('/paymentProcess', (req, res) => {
   const transactionNumber = '123456789';
   const amountToPay = 100.0;
 
+  if (!transactionNumber || !amountToPay) {
+    return res.status(400).send('Invalid transaction details.');
+  }
+
   // Render the financial institution page
   res.send(`
     <html>
@@ -27,14 +31,16 @@ app.get('/paymentProcess', (req, res) => {
             align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
-          }
-
-          h1 {
             color: #333;
           }
 
+          h1 {
+            color: #444;
+          }
+
           p {
-            color: #666;
+            color: #444;
+            line-height: 1.5;
           }
 
           button {
@@ -55,23 +61,40 @@ app.get('/paymentProcess', (req, res) => {
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
+            box-sizing: border-box;
+          }
+
+          @media (max-width: 600px) {
+            .container {
+              padding: 10px;
+            }
           }
         </style>
       </head>
       <body>
-        <div class="container">
+        <header>
           <h1>Transaction Details</h1>
+        </header>
+        <section class="container">
           <p><strong>Transaction Number:</strong> ${transactionNumber}<br>
           This is your unique identifier for this transaction.</p>
           <p><strong>Amount to Pay:</strong> $${amountToPay}<br>
           This is the total amount due for the transaction.</p>
-          <button onclick="pay()">Complete Transaction</button>
-        </div>
+          <button id="payButton" onclick="pay()">Complete Transaction</button>
+        </section>
         <script>
           function pay() {
-            // Redirect back to the app using the deep link
-            const deepLink = 'custom.flutterbooksample.com://transaction/${transactionNumber}';
-            window.location.href = deepLink;
+            // Change button text to indicate processing
+            const payButton = document.getElementById('payButton');
+            payButton.textContent = 'Processing your transaction...';
+            payButton.disabled = true;
+
+            // Simulate a delay before redirect
+            setTimeout(() => {
+              // Redirect back to the app using the deep link
+              const deepLink = 'custom.flutterbooksample.com://transaction/${transactionNumber}';
+              window.location.href = deepLink;
+            }, 2000);
           }
         </script>
       </body>
