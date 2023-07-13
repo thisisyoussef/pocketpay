@@ -26,6 +26,10 @@ app.use(sortCodeToBankUser);
 app.use(ticketUser);
 app.use(verificationUser);
 
+
+//run mongoose
+require("./db/mongoose");
+
 const CSS = `
   body {
     font-family: Arial, sans-serif;
@@ -143,8 +147,6 @@ app.get('/paymentProcess', (req, res) => {
   res.send(HTML);
 });
 
-//run mongoose
-require("./db/mongoose");
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
