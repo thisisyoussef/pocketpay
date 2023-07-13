@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Add Institution
-router.put('/addInstitution', async (req, res) => {
+router.put('user/addInstitution', async (req, res) => {
     try {
       const { institution_id, accountNumber } = req.body;
   
@@ -23,7 +23,7 @@ router.put('/addInstitution', async (req, res) => {
   });
   
   // Change Institution Index
-  router.put('/changeInstitutionIndex', async (req, res) => {
+  router.put('user/changeInstitutionIndex', async (req, res) => {
     try {
       const { institutionId } = req.body;
   
@@ -44,7 +44,7 @@ router.put('/addInstitution', async (req, res) => {
   });
   
   // Remove Account
-  router.put('/removeInstitutionAccount', async (req, res) => {
+  router.put('user/removeInstitutionAccount', async (req, res) => {
     try {
       const { accountNumber, institution } = req.query;
   
