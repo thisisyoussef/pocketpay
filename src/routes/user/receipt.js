@@ -40,10 +40,10 @@ function generateRandomReceipts() {
       payee: generateRandomPayee(),
       payer: `Payer ${i + 1}`,
       payeee: `Payee ${i + 1}`,
-      amount: getRandomFloat(50, 200),
+      amount: getRandomFloat(50, 200).toFixed(2),
       description: generateRandomDescription(),
-      tip: getRandomFloat(5, 20),
-      transactionNumber: getRandomInt(100000, 999999).toString(),
+      tip: getRandomFloat(5, 20).toFixed(2),
+      transactionNumber: getRandomInt(1, 100).toString().padStart(3, '0'),
       transaction: `Transaction ${i + 1}`,
       date: generateRandomDate(),
       totalAmount: 0, // Placeholder, will be calculated later
@@ -52,13 +52,13 @@ function generateRandomReceipts() {
       updatedAt: generateRandomDate(),
     };
 
-    receipt.totalAmount = receipt.amount + receipt.tip;
+    receipt.totalAmount = (parseFloat(receipt.amount) + parseFloat(receipt.tip)).toFixed(2);
 
     receipts.push(receipt);
   }
 
-  // Sort receipts by date in descending order
-  receipts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Sort receipts by date in ascending order
+  receipts.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return receipts;
 }
@@ -74,10 +74,10 @@ function generateRandomRefunds() {
     const refund = {
       _id: `refund${i + 1}`,
       payee: `Payee ${i + 1}`,
-      amount: getRandomFloat(25, 100),
+      amount: getRandomFloat(25, 100).toFixed(2),
       description: `Refund ${i + 1}`,
-      tip: getRandomFloat(2.5, 10),
-      transactionNumber: getRandomInt(100000, 999999).toString(),
+      tip: getRandomFloat(2.5, 10).toFixed(2),
+      transactionNumber: getRandomInt(1, 100).toString().padStart(3, '0'),
       transaction: `Transaction ${i + 1}`,
       date: generateRandomDate(),
       totalAmount: 0, // Placeholder, will be calculated later
@@ -86,20 +86,20 @@ function generateRandomRefunds() {
       updatedAt: generateRandomDate(),
     };
 
-    refund.totalAmount = refund.amount + refund.tip;
+    refund.totalAmount = (parseFloat(refund.amount) + parseFloat(refund.tip)).toFixed(2);
 
     refunds.push(refund);
   }
 
-  // Sort refunds by date in descending order
-  refunds.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Sort refunds by date in ascending order
+  refunds.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return refunds;
 }
 
 // Generate a random integer between min and max (inclusive)
 function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 // Generate a random float between min and max
@@ -117,7 +117,7 @@ function generateRandomDescription() {
     'Travel Expenses',
   ];
 
-  const randomIndex = getRandomInt(0, descriptions.length - 1);
+  const randomIndex = getRandomInt(0, descriptions.length);
   return descriptions[randomIndex];
 }
 
@@ -130,17 +130,17 @@ function generateRandomDate() {
   return `${year}-${month}-${day}`;
 }
 
-// Generate a random payee object with a random business name
+// Generate a random payee object with a realistic business name
 function generateRandomPayee() {
   const businessNames = [
-    'ABC Store',
-    'XYZ Corporation',
-    'PQR Enterprises',
-    'LMN Industries',
-    'JKL Ltd',
+    'QuickMart',
+    'FashionTrendz',
+    'FoodLovers',
+    'TechGuru',
+    'GlobalTraders',
   ];
 
-  const randomIndex = getRandomInt(0, businessNames.length - 1);
+  const randomIndex = getRandomInt(0, businessNames.length);
   return {
     businessName: businessNames[randomIndex],
   };
