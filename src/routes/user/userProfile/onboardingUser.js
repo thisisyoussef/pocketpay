@@ -104,7 +104,7 @@ app.get('/user/myProfile', (req, res) => {
           {
             _id: 'institution1_id',
             institution: {
-              logo: 'https://example.com/logo1.png',
+              logo: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/logo1.png?alt=media&token=999c81aa-4344-47cd-a632-adb097d3b3c1',
               sortCode: '123456',
               _id: 'institution1_id',
               name: 'Barclays Bank',
@@ -114,7 +114,7 @@ app.get('/user/myProfile', (req, res) => {
           {
             _id: 'institution2_id',
             institution: {
-              logo: 'https://example.com/logo2.png',
+              logo: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/logo2.png?alt=media&token=ce534542-5071-4828-8fd3-15601e415a0d',
               sortCode: '234567',
               _id: 'institution2_id',
               name: 'Lloyds Bank',
@@ -124,7 +124,7 @@ app.get('/user/myProfile', (req, res) => {
           {
             _id: 'institution3_id',
             institution: {
-              logo: 'https://example.com/logo3.png',
+              logo: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/logo3.png?alt=media&token=9515b72a-db69-4d4a-a9b9-fc99ac088a7b',
               sortCode: '345678',
               _id: 'institution3_id',
               name: 'NatWest Bank',
@@ -134,7 +134,7 @@ app.get('/user/myProfile', (req, res) => {
           {
             _id: 'institution4_id',
             institution: {
-              logo: 'https://example.com/logo4.png',
+              logo: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/logo4.png?alt=media&token=51e301af-86dd-413b-a032-a1a65bd8a675',
               sortCode: '456789',
               _id: 'institution4_id',
               name: 'HSBC Bank',
@@ -144,7 +144,7 @@ app.get('/user/myProfile', (req, res) => {
           {
             _id: 'institution5_id',
             institution: {
-              logo: 'https://example.com/logo5.png',
+              logo: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/logo1.png?alt=media&token=999c81aa-4344-47cd-a632-adb097d3b3c1',
               sortCode: '567890',
               _id: 'institution5_id',
               name: 'Santander Bank',
@@ -154,7 +154,7 @@ app.get('/user/myProfile', (req, res) => {
           {
             _id: 'institution6_id',
             institution: {
-              logo: 'https://example.com/logo6.png',
+              logo: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/logo3.png?alt=media&token=9515b72a-db69-4d4a-a9b9-fc99ac088a7b',
               sortCode: '678901',
               _id: 'institution6_id',
               name: 'Nationwide Building Society',
