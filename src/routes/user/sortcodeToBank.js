@@ -23,7 +23,9 @@ router.get('institution/institutionFilter', async (req, res) => {
           },
         ];
   
-        const filteredBanks = banks.filter((bank) => bank.name.toLowerCase().includes(sortCode.toLowerCase()));
+        //const filteredBanks = banks.filter((bank) => bank.name.toLowerCase().includes(sortCode.toLowerCase()));
+        //set filtered banks to just banks temporarily
+        const filteredBanks = banks;
   
         if (filteredBanks.length > 0) {
           res.status(200).json(filteredBanks);
