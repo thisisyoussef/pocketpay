@@ -28,6 +28,46 @@ app.use(receiptUser);
 app.use(sortCodeToBankUser);
 app.use(ticketUser);
 app.use(verificationUser);
+
+
+const path = require('path');
+
+// Define a list of image names get the image names from the database in /images
+const imageNames = [ 'logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
+
+// Serve each image as a separate page
+imageNames.forEach((imageName) => {
+  const route = `/${imageName}`;
+
+  // Define the route handler for each image page
+  app.get(route, (req, res) => {
+    const html = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>${imageName}</title>
+        </head>
+        <body>
+          <img src="/image/${imageName}" alt="${imageName}">
+        </body>
+      </html>
+    `;
+    res.send(html);
+  });
+
+  // Serve the requested image for each image page
+  app.get(`/${imageName}`, (req, res) => {
+    const imagePath = path.join(__dirname, 'images', imageName);
+    res.sendFile(imagePath);
+  });
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+
 app.get('/paymentProcess', (req, res) => {
   // Generate transaction details (dummy data)
   const transactionNumber = '123456789';
