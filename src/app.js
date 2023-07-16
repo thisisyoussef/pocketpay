@@ -32,8 +32,23 @@ app.use(verificationUser);
 
 const path = require('path');
 
-// Define a list of image names get the image names from the database in /images
-const imageNames = [ 'logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Define a list of image names
+const imageNames = ['logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
+
+// Set up routes for serving the HTML pages
+imageNames.forEach((imageName) => {
+  const route = `/${imageName.replace('.png', '')}`;
+  const htmlPath = path.join(__dirname, `${imageName.replace('.png', '')}.html`);
+
+  app.get(route, (req, res) => {
+    res.sendFile(htmlPath);
+  });
+});
+
+
 
 app.use(express.static(path.join('images', 'public')));
 
