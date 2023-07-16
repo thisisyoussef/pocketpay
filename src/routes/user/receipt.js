@@ -40,9 +40,9 @@ function generateRandomReceipts() {
       payee: generateRandomPayee(),
       payer: `Payer ${i + 1}`,
       payeee: `Payee ${i + 1}`,
-      amount: getRandomFloat(50, 200).toFixed(2),
+      amount: getRandomFloat(50, 200),
       description: generateRandomDescription(),
-      tip: getRandomFloat(5, 20).toFixed(2),
+      tip: getRandomFloat(5, 20),
       transactionNumber: getRandomInt(1, 100).toString().padStart(3, '0'),
       transaction: `Transaction ${i + 1}`,
       date: generateRandomDate(),
@@ -52,7 +52,7 @@ function generateRandomReceipts() {
       updatedAt: generateRandomDate(),
     };
 
-    receipt.totalAmount = (parseFloat(receipt.amount) + parseFloat(receipt.tip)).toFixed(2);
+    receipt.totalAmount = parseFloat(receipt.amount) + parseFloat(receipt.tip);
 
     receipts.push(receipt);
   }
@@ -74,9 +74,9 @@ function generateRandomRefunds() {
     const refund = {
       _id: `refund${i + 1}`,
       payee: `Payee ${i + 1}`,
-      amount: getRandomFloat(25, 100).toFixed(2),
+      amount: getRandomFloat(25, 100),
       description: `Refund ${i + 1}`,
-      tip: getRandomFloat(2.5, 10).toFixed(2),
+      tip: getRandomFloat(2.5, 10),
       transactionNumber: getRandomInt(1, 100).toString().padStart(3, '0'),
       transaction: `Transaction ${i + 1}`,
       date: generateRandomDate(),
@@ -86,7 +86,7 @@ function generateRandomRefunds() {
       updatedAt: generateRandomDate(),
     };
 
-    refund.totalAmount = (parseFloat(refund.amount) + parseFloat(refund.tip)).toFixed(2);
+    refund.totalAmount = parseFloat(refund.amount) + parseFloat(refund.tip);
 
     refunds.push(refund);
   }
