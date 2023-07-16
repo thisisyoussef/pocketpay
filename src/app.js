@@ -35,7 +35,7 @@ const path = require('path');
 // Define a list of image names get the image names from the database in /images
 const imageNames = [ 'logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
 
-app.use(express.static(path.join(__dirname, 'images')));
+app.use(express.static(path.join('images', 'public')));
 
 
 // Start the server
