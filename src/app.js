@@ -30,29 +30,6 @@ app.use(ticketUser);
 app.use(verificationUser);
 
 
-const path = require('path');
-
-// Serve static files
-app.use(express.static(path.join(__dirname, '..', 'public')));
-
-// Define a list of image names
-const imageNames = ['logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
-
-// Set up routes for serving the HTML pages
-imageNames.forEach((imageName) => {
-  const route = `/${imageName.replace('.png', '')}`;
-  const htmlPath = path.join(__dirname, '..', 'public', `${imageName.replace('.png', '')}.html`);
-
-  app.get(route, (req, res) => {
-    res.sendFile(htmlPath);
-  });
-});
-
-
-
-app.use(express.static(path.join('images', 'public')));
-
-
 // Start the server
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
