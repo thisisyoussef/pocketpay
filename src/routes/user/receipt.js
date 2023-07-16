@@ -90,11 +90,11 @@ function generateRandomRefunds() {
       tip: parseFloat(getRandomFloat(2.5, 10).toFixed(2)),
       transactionNumber: getRandomInt(1, 100).toString().padStart(3, '0'),
       transaction: `Transaction ${i + 1}`,
-      date: refundDate(),
+      date: refundDate,
       totalAmount: 0, // Placeholder, will be calculated later
       logo: '', // Placeholder for logo link, to be updated dynamically
-      createdAt: refundTimestamp(),
-      updatedAt: refundTimestamp(),
+      createdAt: refundTimestamp,
+      updatedAt: refundTimestamp,
     };
 
     refund.totalAmount = parseFloat((refund.amount + refund.tip).toFixed(2));
