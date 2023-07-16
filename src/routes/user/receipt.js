@@ -39,10 +39,11 @@ function generateRandomReceipts() {
   for (let i = 0; i < numReceipts; i++) {
     const refundDate = generateRandomDate();
     const refundTimestamp = generateTimestampFromDate(refundDate);
+    const payee = generateRandomPayee();
     const receipt = {
       _id: `receipt${i + 1}`,
-      payee: generateRandomPayee(),
-      payer: generateRandomPayer(),
+      payee: payee,
+      payer: payee,
       payeee: `Payee ${i + 1}`,
       amount: parseFloat(getRandomFloat(50, 200).toFixed(2)),
       description: generateRandomDescription(),
