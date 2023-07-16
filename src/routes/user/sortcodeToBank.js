@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // Sort Code to Bank
-router.get('/institutionFilter', async (req, res) => {
+router.get('institution/institutionFilter', async (req, res) => {
     try {
       const { sortCode } = req.query;
   
@@ -41,7 +41,7 @@ router.get('/institutionFilter', async (req, res) => {
   });
   
   // Logo Filter
-  router.get('/logoFilter', async (req, res) => {
+  router.get('institution/logoFilter', async (req, res) => {
     try {
       const { sortCode } = req.query;
   
@@ -55,11 +55,11 @@ router.get('/institutionFilter', async (req, res) => {
         const logos = [
           {
             _id: 'logo1',
-            logo: 'https://example.com/logo1.png',
+            logo: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/logo1.png?alt=media&token=999c81aa-4344-47cd-a632-adb097d3b3c1',
           },
           {
             _id: 'logo2',
-            logo: 'https://example.com/logo2.png',
+            logo: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/logo2.png?alt=media&token=ce534542-5071-4828-8fd3-15601e415a0d',
           },
         ];
   
