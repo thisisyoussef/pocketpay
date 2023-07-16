@@ -99,7 +99,7 @@ function generateRandomRefunds() {
 
     refund.totalAmount = parseFloat((refund.amount + refund.tip).toFixed(2));
 
-    refund.logo = getLogoLink(refund.payeee.businessName) || '';
+    refund.logo = getLogoLink(refund.payee.businessName) || '';
 
     refunds.push(refund);
   }
