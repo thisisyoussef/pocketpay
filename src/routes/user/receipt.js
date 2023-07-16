@@ -83,7 +83,7 @@ function generateRandomRefunds() {
   const refundTimestamp = generateTimestampFromDate(refundDate);
     const refund = {
       _id: `refund${i + 1}`,
-      payee: generateRandomePayee(),
+      payee: generateRandomPayee(),
       payer: generateRandomPayee(),
       amount: parseFloat(getRandomFloat(25, 100).toFixed(2)),
       description: `Refund ${i + 1}`,
