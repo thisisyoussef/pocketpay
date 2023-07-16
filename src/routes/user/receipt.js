@@ -189,7 +189,7 @@ function getLogoLink(businessName) {
 }
 
 function generateTimestampFromDate(date) {
-  const timestamp = new Date(date).toISOString();
+  var timestamp = new Date(date).toISOString();
   //set the time to a certain random time of day
   const randomHour = getRandomInt(0, 23).toString().padStart(2, '0');
   const randomMinute = getRandomInt(0, 59).toString().padStart(2, '0');
