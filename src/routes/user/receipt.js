@@ -17,14 +17,14 @@ router.get('/user/receiptAccInst', async (req, res) => {
           {
             _id: 'receipt1',
             payee: {
-              businessName: 'Business 1',
+              businessName: 'H&M',
             },
             payer: 'Payer 1',
             payeee: 'Payee 1',
             amount: 100.0,
             description: 'Receipt 1',
             tip: 10.0,
-            transactionNumber: '123456789',
+            transactionNumber: '9646',
             transaction: 'Transaction 1',
             date: '2023-07-09',
             totalAmount: 110.0,
