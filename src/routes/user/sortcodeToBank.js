@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // Sort Code to Bank
-router.get('institution/institutionFilter', async (req, res) => {
+router.get('/institution/institutionFilter', async (req, res) => {
     try {
       const { sortCode } = req.query;
   
@@ -43,7 +43,7 @@ router.get('institution/institutionFilter', async (req, res) => {
   });
   
   // Logo Filter
-  router.get('institution/logoFilter', async (req, res) => {
+  router.get('/institution/logoFilter', async (req, res) => {
     try {
       const { sortCode } = req.query;
   
