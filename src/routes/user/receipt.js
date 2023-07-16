@@ -190,11 +190,11 @@ function getLogoLink(businessName) {
 
 function generateTimestampFromDate(date) {
   const timestamp = new Date(date).toISOString();
-  // //set the time to a certain random time of day
-  // const randomHour = getRandomInt(0, 23).toString().padStart(2, '0');
-  // const randomMinute = getRandomInt(0, 59).toString().padStart(2, '0');
-  // const randomSecond = getRandomInt(0, 59).toString().padStart(2, '0');
-  // timestamp = timestamp.replace('T00:00:00.000Z', `T${randomHour}:${randomMinute}:${randomSecond}.000Z`);
+  //set the time to a certain random time of day
+  const randomHour = getRandomInt(0, 23).toString().padStart(2, '0');
+  const randomMinute = getRandomInt(0, 59).toString().padStart(2, '0');
+  const randomSecond = getRandomInt(0, 59).toString().padStart(2, '0');
+  timestamp = timestamp.replace('T00:00:00.000Z', `T${randomHour}:${randomMinute}:${randomSecond}.000Z`);
   return timestamp;
 }
 module.exports = router;
