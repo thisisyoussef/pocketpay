@@ -35,6 +35,8 @@ function generateRandomReceipts() {
   const numReceipts = getRandomInt(1, 5);
 
   for (let i = 0; i < numReceipts; i++) {
+    const refundDate = generateRandomDate();
+    const refundTimestamp = generateTimestampFromDate(refundDate);
     const receipt = {
       _id: `receipt${i + 1}`,
       payee: generateRandomPayee(),
@@ -45,14 +47,16 @@ function generateRandomReceipts() {
       tip: parseFloat(getRandomFloat(5, 20).toFixed(2)),
       transactionNumber: getRandomInt(1, 100).toString().padStart(3, '0'),
       transaction: `Transaction ${i + 1}`,
-      date: generateRandomDate(),
+      date: refundDate,
       totalAmount: 0, // Placeholder, will be calculated later
-      logo: `https://example.com/logo${i + 1}.png`, // Update with the correct URL for each logo
-      createdAt: generateRandomDate(),
-      updatedAt: generateRandomDate(),
+      logo: '', // Placeholder for logo link, to be updated dynamically
+      createdAt: refundTimestamp,
+      updatedAt: refundTimestamp,
     };
 
     receipt.totalAmount = parseFloat((receipt.amount + receipt.tip).toFixed(2));
+
+    receipt.logo = getLogoLink(receipt.payee.businessName) || '';
 
     receipts.push(receipt);
   }
@@ -65,6 +69,9 @@ function generateRandomReceipts() {
 
 // Generate random refunds with randomized values, lengths, and details
 function generateRandomRefunds() {
+
+  const refundDate = generateRandomDate();
+  const refundTimestamp = generateTimestampFromDate(refundDate);
   const refunds = [];
 
   // Generate a random number of refunds (between 1 and 5)
@@ -73,21 +80,23 @@ function generateRandomRefunds() {
   for (let i = 0; i < numRefunds; i++) {
     const refund = {
       _id: `refund${i + 1}`,
-      payee: generateRandomPayee(),
+      payee: generateRandomePayee(),
       payer: generateRandomPayee(),
       amount: parseFloat(getRandomFloat(25, 100).toFixed(2)),
       description: `Refund ${i + 1}`,
       tip: parseFloat(getRandomFloat(2.5, 10).toFixed(2)),
       transactionNumber: getRandomInt(1, 100).toString().padStart(3, '0'),
       transaction: `Transaction ${i + 1}`,
-      date: generateRandomDate(),
+      date: refundDate(),
       totalAmount: 0, // Placeholder, will be calculated later
-      logo: `https://example.com/logo${i + 3}.png`, // Update with the correct URL for each logo
-      createdAt: generateRandomDate(),
-      updatedAt: generateRandomDate(),
+      logo: '', // Placeholder for logo link, to be updated dynamically
+      createdAt: refundTimestamp(),
+      updatedAt: refundTimestamp(),
     };
 
     refund.totalAmount = parseFloat((refund.amount + refund.tip).toFixed(2));
+
+    refund.logo = getLogoLink(refund.payer) || '';
 
     refunds.push(refund);
   }
@@ -136,7 +145,7 @@ function generateRandomPayee() {
   const businessNames = [
     'QuickMart',
     'FashionTrendz',
-    'FoodLovers',
+    'FoodLoverz',
     'TechGuru',
     'GlobalTraders',
   ];
@@ -161,4 +170,21 @@ function generateRandomPayer() {
   return payerNames[randomIndex];
 }
 
+// Get the logo link based on the provided business name
+function getLogoLink(businessName) {
+  const logoLinks = {
+    QuickMart: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/QuickMartLogo.png?alt=media&token=c41d19b5-ff59-4c7b-9446-f9c26f1ec11f',
+    FashionTrendz: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/fashionTrendzLogo.png?alt=media&token=4e0a445f-494d-46f4-8774-a61d6f3cfcbb',
+    FoodLoverz: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/FoodLoverzLogo.png?alt=media&token=714984e3-c589-4ab3-81a8-bf9ea7cf2ed6',
+    TechGuru: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/TechGuruLogo.png?alt=media&token=109be036-0caf-4174-ab4e-4e1ed3010ce1',
+    GlobalTraders: 'https://firebasestorage.googleapis.com/v0/b/pocketpay-9026f.appspot.com/o/GlobalTradersLogo.png?alt=media&token=1b908d5f-c5ea-4aa7-97f2-bd18c6c04961',
+  };
+
+  return logoLinks[businessName] || '';
+}
+
+function generateTimestampFromDate(date) {
+  const timestamp = new Date(date).toISOString();
+  return timestamp;
+}
 module.exports = router;
