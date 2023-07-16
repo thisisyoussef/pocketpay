@@ -38,11 +38,11 @@ function generateRandomReceipts() {
     const receipt = {
       _id: `receipt${i + 1}`,
       payee: generateRandomPayee(),
-      payer: `Payer ${i + 1}`,
+      payer: generateRandomPayer(),
       payeee: `Payee ${i + 1}`,
-      amount: getRandomFloat(50, 200),
+      amount: getRandomFloat(50, 200).toFixed(2),
       description: generateRandomDescription(),
-      tip: getRandomFloat(5, 20),
+      tip: getRandomFloat(5, 20).toFixed(2),
       transactionNumber: getRandomInt(1, 100).toString().padStart(3, '0'),
       transaction: `Transaction ${i + 1}`,
       date: generateRandomDate(),
@@ -52,7 +52,7 @@ function generateRandomReceipts() {
       updatedAt: generateRandomDate(),
     };
 
-    receipt.totalAmount = parseFloat(receipt.amount) + parseFloat(receipt.tip);
+    receipt.totalAmount = (parseFloat(receipt.amount) + parseFloat(receipt.tip)).toFixed(2);
 
     receipts.push(receipt);
   }
@@ -74,9 +74,10 @@ function generateRandomRefunds() {
     const refund = {
       _id: `refund${i + 1}`,
       payee: `Payee ${i + 1}`,
-      amount: getRandomFloat(25, 100),
+      payer: generateRandomPayee(),
+      amount: getRandomFloat(25, 100).toFixed(2),
       description: `Refund ${i + 1}`,
-      tip: getRandomFloat(2.5, 10),
+      tip: getRandomFloat(2.5, 10).toFixed(2),
       transactionNumber: getRandomInt(1, 100).toString().padStart(3, '0'),
       transaction: `Transaction ${i + 1}`,
       date: generateRandomDate(),
@@ -86,7 +87,7 @@ function generateRandomRefunds() {
       updatedAt: generateRandomDate(),
     };
 
-    refund.totalAmount = parseFloat(refund.amount) + parseFloat(refund.tip);
+    refund.totalAmount = (parseFloat(refund.amount) + parseFloat(refund.tip)).toFixed(2);
 
     refunds.push(refund);
   }
@@ -144,6 +145,20 @@ function generateRandomPayee() {
   return {
     businessName: businessNames[randomIndex],
   };
+}
+
+// Generate a random payer object with a realistic name
+function generateRandomPayer() {
+  const payerNames = [
+    'John Doe',
+    'Jane Smith',
+    'David Johnson',
+    'Emily Wilson',
+    'Michael Brown',
+  ];
+
+  const randomIndex = getRandomInt(0, payerNames.length);
+  return payerNames[randomIndex];
 }
 
 module.exports = router;
