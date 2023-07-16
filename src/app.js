@@ -41,7 +41,7 @@ const imageNames = ['logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
 // Set up routes for serving the HTML pages
 imageNames.forEach((imageName) => {
   const route = `/${imageName.replace('.png', '')}`;
-  const htmlPath = path.join(__dirname, `${imageName.replace('.png', '')}.html`);
+  const htmlPath = path.join(__dirname, '..', 'public', `${imageName.replace('.png', '')}.html`);
 
   app.get(route, (req, res) => {
     res.sendFile(htmlPath);
