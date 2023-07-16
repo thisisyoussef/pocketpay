@@ -7,7 +7,7 @@ router.get('/user/receiptAccInst', async (req, res) => {
     const { sortCode, accountNumber } = req.query;
 
     // Simulate getting receipts per account
-    const isSuccess = Math.random() < 0.90; // Simulate 99% success rate
+    const isSuccess = Math.random() < 0.99; // Simulate 99% success rate
 
     if (isSuccess) {
       console.log(`Get receipts per account: sortCode=${sortCode}, accountNumber=${accountNumber}`);
@@ -99,7 +99,7 @@ function generateRandomRefunds() {
 
     refund.totalAmount = parseFloat((refund.amount + refund.tip).toFixed(2));
 
-    refund.logo = getLogoLink(refund.payer) || '';
+    refund.logo = getLogoLink(refund.payee) || '';
 
     refunds.push(refund);
   }
