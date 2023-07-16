@@ -30,12 +30,6 @@ app.use(ticketUser);
 app.use(verificationUser);
 
 
-// Start the server
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
-
-
 app.get('/paymentProcess', (req, res) => {
   // Generate transaction details (dummy data)
   const transactionNumber = '123456789';
