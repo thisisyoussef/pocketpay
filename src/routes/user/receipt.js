@@ -7,7 +7,7 @@ router.get('/user/receiptAccInst', async (req, res) => {
     const { sortCode, accountNumber } = req.query;
 
     // Simulate getting receipts per account
-    const isSuccess = Math.random() < 0.9; // Simulate 90% success rate
+    const isSuccess = Math.random() < 0.90; // Simulate 99% success rate
 
     if (isSuccess) {
       console.log(`Get receipts per account: sortCode=${sortCode}, accountNumber=${accountNumber}`);
@@ -29,10 +29,12 @@ router.get('/user/receiptAccInst', async (req, res) => {
 
 // Generate random receipts with randomized values, lengths, and details
 function generateRandomReceipts() {
+  
   const receipts = [];
 
   // Generate a random number of receipts (between 1 and 5)
   const numReceipts = getRandomInt(1, 5);
+  
 
   for (let i = 0; i < numReceipts; i++) {
     const refundDate = generateRandomDate();
@@ -70,14 +72,15 @@ function generateRandomReceipts() {
 // Generate random refunds with randomized values, lengths, and details
 function generateRandomRefunds() {
 
-  const refundDate = generateRandomDate();
-  const refundTimestamp = generateTimestampFromDate(refundDate);
   const refunds = [];
 
   // Generate a random number of refunds (between 1 and 5)
   const numRefunds = getRandomInt(1, 5);
 
   for (let i = 0; i < numRefunds; i++) {
+
+  const refundDate = generateRandomDate();
+  const refundTimestamp = generateTimestampFromDate(refundDate);
     const refund = {
       _id: `refund${i + 1}`,
       payee: generateRandomePayee(),
