@@ -65,7 +65,7 @@ router.get('institution/institutionFilter', async (req, res) => {
           },
         ];
   
-        const filteredLogos = logos.filter((logo) => logo.logo.toLowerCase().includes(sortCode.toLowerCase()));
+        //const filteredLogos = logos.filter((logo) => logo.logo.toLowerCase().includes(sortCode.toLowerCase()));
         //set filtered logos to just logos temporarily
         const filteredLogos = logos;
   
