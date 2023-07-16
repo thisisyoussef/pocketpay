@@ -41,8 +41,8 @@ function generateRandomReceipts() {
     const refundTimestamp = generateTimestampFromDate(refundDate);
     const receipt = {
       _id: `receipt${i + 1}`,
-      payee: generateRandomPayer(),
-      payer: generateRandomPayee(),
+      payee: generateRandomPayee(),
+      payer: generateRandomPayer(),
       payeee: `Payee ${i + 1}`,
       amount: parseFloat(getRandomFloat(50, 200).toFixed(2)),
       description: generateRandomDescription(),
