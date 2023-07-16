@@ -33,7 +33,7 @@ app.use(verificationUser);
 const path = require('path');
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Define a list of image names
 const imageNames = ['logo1.png', 'logo2.png', 'logo3.png', 'logo4.png'];
