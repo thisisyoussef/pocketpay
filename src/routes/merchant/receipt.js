@@ -3,26 +3,54 @@ const router = express.Router();
 
 const userToken = 'YOUR_MOCK_USER_TOKEN';
 
+//Mock data reading:
+
+// if (decodedData["Receipts"] != null) {
+//   for (var payment in decodedData["Receipts"]) {
+//     receipts.add(Receipt(
+//         // BUSINESSNAME: payment['payee']['businessName'],
+//         ID: payment["_id"],
+//         PAYER: payment["payer"],
+//         PAYEE: payment["payee"],
+//         AMOUNT: payment['amount'],
+//         DESCRIPTION: payment["description"],
+//         TIP: double.parse(payment["tip"].toString()),
+//         TRANSACTIONNUMBER: payment["transactionNumber"],
+//         TRANSACTION: payment["transaction"],
+//         DATE: payment["date"],
+//         TOTALAMOUNT: payment["totalAmount"],
+//         CREATEDAT: payment["createdAt"],
+//         UPDATEDAT: payment["updatedAt"],
+//         REFUND: false,
+//         V: 0));
+//     print("payer is " + payment["payer"].toString());
+//   }
+// }
 // Mock receipt data
-const mockReceipts = [
-  {
-    ID: 1,
-    PAYER: 'John Doe',
-    PAYEE: 'Jane Smith',
-    AMOUNT: 50.0,
-    DESCRIPTION: 'Payment for goods',
-    TIP: 5.0,
-    TRANSACTIONNUMBER: '12345',
-    TRANSACTION: 'Transaction details',
-    DATE: '2023-07-09',
-    TOTALAMOUNT: 55.0,
-    CREATEDAT: '2023-07-09T10:00:00Z',
-    UPDATEDAT: '2023-07-09T11:00:00Z',
-    REFUND: false,
-    V: 0,
-  },
+// add an object with a receipts field and a list of receipts inside 
+const mockReceipts = 
+{
+  "Receipts": [
+    {
+      "payer": "Mock Payer",
+      "_id": "RECEIPT_ID_1",
+      "payee": "Mock Payee",
+      "amount": 100.0,
+      "description": "Mock Description",
+      "tip": 0.0,
+      "transactionNumber": "123456789",
+      "transaction": "Mock Transaction",
+      "date": "2021-01-01T00:00:00.000Z",
+      "totalAmount": 100.0,
+      "createdAt": "2021-01-01T00:00:00.000Z",
+      "updatedAt": "2021-01-01T00:00:00.000Z",
+      "refund": false,
+    },
+  ],
+};
+    
+
   // Add more mock receipt data here
-];
 
 // Get All Receipts
 router.get('/merchant/allReceipts', (req, res) => {
