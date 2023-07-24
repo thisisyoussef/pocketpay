@@ -9,6 +9,19 @@ const sortCodeToBankUser = require('./routes/user/sortcodeToBank');
 const ticketUser = require('./routes/user/ticket');
 const verificationUser = require('./routes/user/verification');
 
+//same exact routes but merchant instead of user:
+const onBoardingMerchant = require('./routes/merchant/userProfile/onboardingMerchant');
+const updateUserMerchant = require('./routes/merchant/userProfile/updateUserMerchant');
+const verificationUserProfileMerchant = require('./routes/merchant/userProfile/verificationMerchant');
+const institutionMerchant = require('./routes/merchant/institutionEndpoints');
+const paymentMerchant = require('./routes/merchant/payment');
+const receiptMerchant = require('./routes/merchant/receipt');
+const sortCodeToBankMerchant = require('./routes/merchant/sortcodeToBank');
+const ticketMerchant = require('./routes/merchant/ticket');
+const verificationMerchant = require('./routes/merchant/verification');
+
+
+
 
 
 const bodyParser = require('body-parser');
@@ -28,6 +41,15 @@ app.use(receiptUser);
 app.use(sortCodeToBankUser);
 app.use(ticketUser);
 app.use(verificationUser);
+app.use(onBoardingMerchant);
+app.use(updateUserMerchant);
+app.use(verificationUserProfileMerchant);
+app.use(institutionMerchant);
+app.use(paymentMerchant);
+app.use(receiptMerchant);
+app.use(sortCodeToBankMerchant);
+app.use(ticketMerchant);
+app.use(verificationMerchant);
 
 
 app.get('/paymentProcess', (req, res) => {
