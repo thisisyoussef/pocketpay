@@ -20,6 +20,7 @@ const sortCodeToBankMerchant = require('./routes/merchant/sortcodeToBank');
 const ticketMerchant = require('./routes/merchant/ticket');
 const verificationMerchant = require('./routes/merchant/verification');
 const merchantRevenue = require('./routes/merchant/revenue');
+const merchantRefund = require('./routes/merchant/refund');
 
 
 
@@ -52,6 +53,7 @@ app.use(sortCodeToBankMerchant);
 app.use(ticketMerchant);
 app.use(verificationMerchant);
 app.use(merchantRevenue);
+app.use(merchantRefund);
 
 
 app.get('/paymentProcess', (req, res) => {
